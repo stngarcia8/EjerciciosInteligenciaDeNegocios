@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "CallCenterISS", "CallCenterISS\CallCenterISS.dtproj", "{D3098F26-DA24-48DC-92E5-CBD4710863AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3098F26-DA24-48DC-92E5-CBD4710863AC}.Development|Default.ActiveCfg = Development
+		{D3098F26-DA24-48DC-92E5-CBD4710863AC}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6E9A3E5E-57B0-4A7A-981F-596970E04A31}
+	EndGlobalSection
+EndGlobal

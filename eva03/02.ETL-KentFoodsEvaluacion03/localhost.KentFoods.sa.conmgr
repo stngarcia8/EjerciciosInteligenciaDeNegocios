@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="localhost.KentFoods.sa"
+  DTS:DTSID="{B5865F88-97BC-4FBF-8CF0-5DC67CDEB9D0}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=KentFoods;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAHHCyQj9unE6YajVZcIJ5LAAAAAACAAAAAAAQZgAAAAEAACAAAABihwFv2liHPjpd6bQZgJSHTR9hY4YHPIuaVAfA1waK8AAAAAAOgAAAAAIAACAAAAD/zVBn5WfvvcSu4+x4PH/WOxJJK+DwZ1OYTJ+VCQyTb4AAAAAi45awN6RlBBWesQlR+dDSJtxiBiYba4VVFCHTV4AdBO/zrgQK8HUrzQwc9kdaguheVQ1CzhJzAX/ciO6cVJonHrh2M++x7MLwkbcP1/2P2jYRRgmEGKNzKkRizXkRCfQWh0PhOdM+JTGJCIQ0o/DnnjGrDryVrL/3+F61OFQUA0AAAACTZVV3GsRGdZI7L8YCkapddB+hU6UohbRchzPd9jI+6E/12cO22/A7sdbBL303mBmG7Wq9OTp6m3zXTDnXAL3B</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

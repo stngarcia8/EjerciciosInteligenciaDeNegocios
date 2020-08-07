@@ -1,0 +1,2450 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/28/2019 12:29:20 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="STNPC"
+  DTS:CreatorName="STNPC\asathor"
+  DTS:DTSID="{2E42F8F0-C4B7-424B-A749-734B77D505F3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="13322"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{A758FFD9-46C8-4E73-B900-4E67D93D102F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[excelLlamadas]"
+      DTS:CreationName="EXCEL"
+      DTS:Description="Excel de llamadas de un call center."
+      DTS:DTSID="{C2FCAFE9-F755-443E-A4A2-F112E11D9800}"
+      DTS:ObjectName="excelLlamadas">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=F:\stnProyectos\businessInteligence\CallCenterISS\fuenteDeDatos\llamadasCallCenter.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[sqlCallCenter]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{913A419E-5143-44A0-A30C-2BD62AC6E2BC}"
+      DTS:ObjectName="sqlCallCenter">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=CallCenter;Provider=MSOLEDBSQL.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA+cPqQXzqg0S693MAmus/6gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADjg0kkuvZA1h+0sDfOYRPfug2DvolBpjNKuqhlhhMKzwAAAAAOgAAAAAIAACAAAADomxrcPbvrTkqwYGkjOr/xYN/IOqE2UCvjCJS1IfJbGCAAAAD0jezZI84jjyo77M9u0e5uaUGMSFGlSgNiM/44uhxhlkAAAAA2Lk+F2yiGuaqAfzeeAws8/dD8XoFdcCydYxpL4PKzZ3MOWX9xm4F7t7/oTR0BPYEAzOlRTcp2l/RoDaiTwCIY</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\fdAgente"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Exportando datos a tabla de agentes."
+      DTS:DTSID="{28996F23-D664-4DBF-BFFF-20894816E3ED}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="fdAgente"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\fdAgente\dAgente"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="dAgente"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dAgente]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fdAgente\dAgente.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlCallCenter]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlCallCenter]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\fdAgente\dAgente.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\fdAgente\dAgente.Inputs[Entrada de destino de OLE DB].Columns[IdAgente]"
+                      cachedDataType="r8"
+                      cachedName="IdAgente"
+                      externalMetadataColumnId="Package\fdAgente\dAgente.Inputs[Entrada de destino de OLE DB].ExternalColumns[idAgente]"
+                      lineageId="Package\fdAgente\hojaAgente.Outputs[Salida de origen de Excel].Columns[IdAgente]" />
+                    <inputColumn
+                      refId="Package\fdAgente\dAgente.Inputs[Entrada de destino de OLE DB].Columns[Agente]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Agente"
+                      externalMetadataColumnId="Package\fdAgente\dAgente.Inputs[Entrada de destino de OLE DB].ExternalColumns[agente]"
+                      lineageId="Package\fdAgente\hojaAgente.Outputs[Salida de origen de Excel].Columns[Agente]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\fdAgente\dAgente.Inputs[Entrada de destino de OLE DB].ExternalColumns[idAgente]"
+                      dataType="i2"
+                      name="idAgente" />
+                    <externalMetadataColumn
+                      refId="Package\fdAgente\dAgente.Inputs[Entrada de destino de OLE DB].ExternalColumns[agente]"
+                      dataType="wstr"
+                      length="50"
+                      name="agente" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\fdAgente\dAgente.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\fdAgente\dAgente.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdAgente\dAgente.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\fdAgente\dAgente.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\fdAgente\dAgente.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\fdAgente\dAgente.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\fdAgente\hojaAgente"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de Excel"
+              name="hojaAgente"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">DimAgente$</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="La asignación de parámetros del comando SQL a variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fdAgente\hojaAgente.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[excelLlamadas]"
+                  connectionManagerRefId="Package.ConnectionManagers[excelLlamadas]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\fdAgente\hojaAgente.Outputs[Salida de origen de Excel]"
+                  name="Salida de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdAgente\hojaAgente.Outputs[Salida de origen de Excel].Columns[IdAgente]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdAgente\hojaAgente.Outputs[Salida de origen de Excel].ExternalColumns[IdAgente]"
+                      lineageId="Package\fdAgente\hojaAgente.Outputs[Salida de origen de Excel].Columns[IdAgente]"
+                      name="IdAgente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdAgente\hojaAgente.Outputs[Salida de origen de Excel].Columns[Agente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdAgente\hojaAgente.Outputs[Salida de origen de Excel].ExternalColumns[Agente]"
+                      length="255"
+                      lineageId="Package\fdAgente\hojaAgente.Outputs[Salida de origen de Excel].Columns[Agente]"
+                      name="Agente"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\fdAgente\hojaAgente.Outputs[Salida de origen de Excel].ExternalColumns[IdAgente]"
+                      dataType="r8"
+                      name="IdAgente" />
+                    <externalMetadataColumn
+                      refId="Package\fdAgente\hojaAgente.Outputs[Salida de origen de Excel].ExternalColumns[Agente]"
+                      dataType="wstr"
+                      length="255"
+                      name="Agente" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\fdAgente\hojaAgente.Outputs[Salida de error de origen de Excel]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdAgente\hojaAgente.Outputs[Salida de error de origen de Excel].Columns[IdAgente]"
+                      dataType="r8"
+                      lineageId="Package\fdAgente\hojaAgente.Outputs[Salida de error de origen de Excel].Columns[IdAgente]"
+                      name="IdAgente" />
+                    <outputColumn
+                      refId="Package\fdAgente\hojaAgente.Outputs[Salida de error de origen de Excel].Columns[Agente]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\fdAgente\hojaAgente.Outputs[Salida de error de origen de Excel].Columns[Agente]"
+                      name="Agente" />
+                    <outputColumn
+                      refId="Package\fdAgente\hojaAgente.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\fdAgente\hojaAgente.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\fdAgente\hojaAgente.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\fdAgente\hojaAgente.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\fdAgente.Paths[Salida de origen de Excel]"
+              endId="Package\fdAgente\dAgente.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de Excel"
+              startId="Package\fdAgente\hojaAgente.Outputs[Salida de origen de Excel]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\fdFecha"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{732E56FD-A5C5-416D-89CA-C7A1A681D90F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="fdFecha"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\fdFecha\dFecha"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="dFecha"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dFecha]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fdFecha\dFecha.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlCallCenter]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlCallCenter]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].Columns[Mes]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Mes"
+                      externalMetadataColumnId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].ExternalColumns[mes]"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[Mes]" />
+                    <inputColumn
+                      refId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].Columns[DiaSemana]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DiaSemana"
+                      externalMetadataColumnId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].ExternalColumns[diaSemana]"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[DiaSemana]" />
+                    <inputColumn
+                      refId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].Columns[Dia]"
+                      cachedDataType="r8"
+                      cachedName="Dia"
+                      externalMetadataColumnId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].ExternalColumns[dia]"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[Dia]" />
+                    <inputColumn
+                      refId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].Columns[IdFecha]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="IdFecha"
+                      externalMetadataColumnId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].ExternalColumns[idFecha]"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[IdFecha]" />
+                    <inputColumn
+                      refId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].Columns[Año]"
+                      cachedDataType="r8"
+                      cachedName="Año"
+                      externalMetadataColumnId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].ExternalColumns[año]"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[Año]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].ExternalColumns[idFecha]"
+                      dataType="i4"
+                      name="idFecha" />
+                    <externalMetadataColumn
+                      refId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].ExternalColumns[año]"
+                      dataType="i2"
+                      name="año" />
+                    <externalMetadataColumn
+                      refId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].ExternalColumns[mes]"
+                      dataType="wstr"
+                      length="50"
+                      name="mes" />
+                    <externalMetadataColumn
+                      refId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].ExternalColumns[diaSemana]"
+                      dataType="wstr"
+                      length="50"
+                      name="diaSemana" />
+                    <externalMetadataColumn
+                      refId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB].ExternalColumns[dia]"
+                      dataType="i2"
+                      name="dia" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\fdFecha\dFecha.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdFecha\dFecha.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\fdFecha\dFecha.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\fdFecha\dFecha.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\fdFecha\dFecha.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\fdFecha\hojaFecha"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de Excel"
+              name="hojaFecha"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">DimFecha$</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="La asignación de parámetros del comando SQL a variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fdFecha\hojaFecha.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[excelLlamadas]"
+                  connectionManagerRefId="Package.ConnectionManagers[excelLlamadas]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel]"
+                  name="Salida de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[IdFecha]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].ExternalColumns[IdFecha]"
+                      length="255"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[IdFecha]"
+                      name="IdFecha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[Año]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].ExternalColumns[Año]"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[Año]"
+                      name="Año"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[Mes]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].ExternalColumns[Mes]"
+                      length="255"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[Mes]"
+                      name="Mes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[DiaSemana]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].ExternalColumns[DiaSemana]"
+                      length="255"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[DiaSemana]"
+                      name="DiaSemana"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[Dia]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].ExternalColumns[Dia]"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].Columns[Dia]"
+                      name="Dia"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].ExternalColumns[IdFecha]"
+                      dataType="wstr"
+                      length="255"
+                      name="IdFecha" />
+                    <externalMetadataColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].ExternalColumns[Año]"
+                      dataType="r8"
+                      name="Año" />
+                    <externalMetadataColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].ExternalColumns[Mes]"
+                      dataType="wstr"
+                      length="255"
+                      name="Mes" />
+                    <externalMetadataColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].ExternalColumns[DiaSemana]"
+                      dataType="wstr"
+                      length="255"
+                      name="DiaSemana" />
+                    <externalMetadataColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel].ExternalColumns[Dia]"
+                      dataType="r8"
+                      name="Dia" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel].Columns[IdFecha]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel].Columns[IdFecha]"
+                      name="IdFecha" />
+                    <outputColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel].Columns[Año]"
+                      dataType="r8"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel].Columns[Año]"
+                      name="Año" />
+                    <outputColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel].Columns[Mes]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel].Columns[Mes]"
+                      name="Mes" />
+                    <outputColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel].Columns[DiaSemana]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel].Columns[DiaSemana]"
+                      name="DiaSemana" />
+                    <outputColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel].Columns[Dia]"
+                      dataType="r8"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel].Columns[Dia]"
+                      name="Dia" />
+                    <outputColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\fdFecha\hojaFecha.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\fdFecha.Paths[Salida de origen de Excel]"
+              endId="Package\fdFecha\dFecha.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de Excel"
+              startId="Package\fdFecha\hojaFecha.Outputs[Salida de origen de Excel]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\fdHechos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{C0D3B9B9-6BB4-4384-8276-B34B146FB205}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="fdHechos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\fdHechos\dHechos"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="dHechos"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[hLlamada]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fdHechos\dHechos.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlCallCenter]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlCallCenter]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].Columns[IdFecha]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="IdFecha"
+                      externalMetadataColumnId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idFecha]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdFecha]" />
+                    <inputColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].Columns[IdHora]"
+                      cachedDataType="r8"
+                      cachedName="IdHora"
+                      externalMetadataColumnId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idHora]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdHora]" />
+                    <inputColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].Columns[IdAgente]"
+                      cachedDataType="r8"
+                      cachedName="IdAgente"
+                      externalMetadataColumnId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idAgente]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdAgente]" />
+                    <inputColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].Columns[IdTipoLlamada]"
+                      cachedDataType="r8"
+                      cachedName="IdTipoLlamada"
+                      externalMetadataColumnId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idTipoLlamada]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdTipoLlamada]" />
+                    <inputColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].Columns[IdResultadoLlamada]"
+                      cachedDataType="r8"
+                      cachedName="IdResultadoLlamada"
+                      externalMetadataColumnId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idResultadoLlamada]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdResultadoLlamada]" />
+                    <inputColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].Columns[TiempoHablado]"
+                      cachedDataType="r8"
+                      cachedName="TiempoHablado"
+                      externalMetadataColumnId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[tiempoHablado]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[TiempoHablado]" />
+                    <inputColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].Columns[TiempoEspera]"
+                      cachedDataType="r8"
+                      cachedName="TiempoEspera"
+                      externalMetadataColumnId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[tiempoEspera]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[TiempoEspera]" />
+                    <inputColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].Columns[SatisfacciónEspera]"
+                      cachedDataType="r8"
+                      cachedName="SatisfacciónEspera"
+                      externalMetadataColumnId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[satisfaccionEspera]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[SatisfacciónEspera]" />
+                    <inputColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].Columns[SatisfacciónAtención]"
+                      cachedDataType="r8"
+                      cachedName="SatisfacciónAtención"
+                      externalMetadataColumnId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[satisfaccionAtencion]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[SatisfacciónAtención]" />
+                    <inputColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].Columns[SatisfacciónRespuesta]"
+                      cachedDataType="r8"
+                      cachedName="SatisfacciónRespuesta"
+                      externalMetadataColumnId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[satisfaccionRespuesta]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[SatisfacciónRespuesta]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idFecha]"
+                      dataType="i4"
+                      name="idFecha" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idHora]"
+                      dataType="i4"
+                      name="idHora" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idAgente]"
+                      dataType="i2"
+                      name="idAgente" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idTipoLlamada]"
+                      dataType="ui1"
+                      name="idTipoLlamada" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idResultadoLlamada]"
+                      dataType="ui1"
+                      name="idResultadoLlamada" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[satisfaccionEspera]"
+                      dataType="i2"
+                      name="satisfaccionEspera" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[satisfaccionAtencion]"
+                      dataType="i2"
+                      name="satisfaccionAtencion" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[satisfaccionRespuesta]"
+                      dataType="i2"
+                      name="satisfaccionRespuesta" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[tiempoHablado]"
+                      dataType="i2"
+                      name="tiempoHablado" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[tiempoEspera]"
+                      dataType="i2"
+                      name="tiempoEspera" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\fdHechos\dHechos.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdHechos\dHechos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\fdHechos\dHechos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\fdHechos\dHechos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\fdHechos\dHechos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\fdHechos\hojaHechos"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de Excel"
+              name="hojaHechos"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">HechosLlamadas$</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="La asignación de parámetros del comando SQL a variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fdHechos\hojaHechos.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[excelLlamadas]"
+                  connectionManagerRefId="Package.ConnectionManagers[excelLlamadas]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel]"
+                  name="Salida de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdLlamada]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[IdLlamada]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdLlamada]"
+                      name="IdLlamada"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdFecha]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[IdFecha]"
+                      length="255"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdFecha]"
+                      name="IdFecha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdHora]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[IdHora]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdHora]"
+                      name="IdHora"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdAgente]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[IdAgente]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdAgente]"
+                      name="IdAgente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdTipoLlamada]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[IdTipoLlamada]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdTipoLlamada]"
+                      name="IdTipoLlamada"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdResultadoLlamada]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[IdResultadoLlamada]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[IdResultadoLlamada]"
+                      name="IdResultadoLlamada"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[SatisfacciónEspera]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[SatisfacciónEspera]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[SatisfacciónEspera]"
+                      name="SatisfacciónEspera"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[SatisfacciónAtención]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[SatisfacciónAtención]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[SatisfacciónAtención]"
+                      name="SatisfacciónAtención"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[SatisfacciónRespuesta]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[SatisfacciónRespuesta]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[SatisfacciónRespuesta]"
+                      name="SatisfacciónRespuesta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[TiempoHablado]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[TiempoHablado]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[TiempoHablado]"
+                      name="TiempoHablado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[TiempoEspera]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[TiempoEspera]"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].Columns[TiempoEspera]"
+                      name="TiempoEspera"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[IdLlamada]"
+                      dataType="r8"
+                      name="IdLlamada" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[IdFecha]"
+                      dataType="wstr"
+                      length="255"
+                      name="IdFecha" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[IdHora]"
+                      dataType="r8"
+                      name="IdHora" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[IdAgente]"
+                      dataType="r8"
+                      name="IdAgente" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[IdTipoLlamada]"
+                      dataType="r8"
+                      name="IdTipoLlamada" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[IdResultadoLlamada]"
+                      dataType="r8"
+                      name="IdResultadoLlamada" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[SatisfacciónEspera]"
+                      dataType="r8"
+                      name="SatisfacciónEspera" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[SatisfacciónAtención]"
+                      dataType="r8"
+                      name="SatisfacciónAtención" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[SatisfacciónRespuesta]"
+                      dataType="r8"
+                      name="SatisfacciónRespuesta" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[TiempoHablado]"
+                      dataType="r8"
+                      name="TiempoHablado" />
+                    <externalMetadataColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel].ExternalColumns[TiempoEspera]"
+                      dataType="r8"
+                      name="TiempoEspera" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[IdLlamada]"
+                      dataType="r8"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[IdLlamada]"
+                      name="IdLlamada" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[IdFecha]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[IdFecha]"
+                      name="IdFecha" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[IdHora]"
+                      dataType="r8"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[IdHora]"
+                      name="IdHora" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[IdAgente]"
+                      dataType="r8"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[IdAgente]"
+                      name="IdAgente" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[IdTipoLlamada]"
+                      dataType="r8"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[IdTipoLlamada]"
+                      name="IdTipoLlamada" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[IdResultadoLlamada]"
+                      dataType="r8"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[IdResultadoLlamada]"
+                      name="IdResultadoLlamada" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[SatisfacciónEspera]"
+                      dataType="r8"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[SatisfacciónEspera]"
+                      name="SatisfacciónEspera" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[SatisfacciónAtención]"
+                      dataType="r8"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[SatisfacciónAtención]"
+                      name="SatisfacciónAtención" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[SatisfacciónRespuesta]"
+                      dataType="r8"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[SatisfacciónRespuesta]"
+                      name="SatisfacciónRespuesta" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[TiempoHablado]"
+                      dataType="r8"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[TiempoHablado]"
+                      name="TiempoHablado" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[TiempoEspera]"
+                      dataType="r8"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[TiempoEspera]"
+                      name="TiempoEspera" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\fdHechos\hojaHechos.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\fdHechos.Paths[Salida de origen de Excel]"
+              endId="Package\fdHechos\dHechos.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de Excel"
+              startId="Package\fdHechos\hojaHechos.Outputs[Salida de origen de Excel]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\fdHora"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{FD43B617-B573-4D15-B2CF-7717D3362AE9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="fdHora"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\fdHora\dHora"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="dHora"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dHora]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fdHora\dHora.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlCallCenter]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlCallCenter]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\fdHora\dHora.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\fdHora\dHora.Inputs[Entrada de destino de OLE DB].Columns[IdHora]"
+                      cachedDataType="r8"
+                      cachedName="IdHora"
+                      externalMetadataColumnId="Package\fdHora\dHora.Inputs[Entrada de destino de OLE DB].ExternalColumns[idHora]"
+                      lineageId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].Columns[IdHora]" />
+                    <inputColumn
+                      refId="Package\fdHora\dHora.Inputs[Entrada de destino de OLE DB].Columns[Hora]"
+                      cachedDataType="date"
+                      cachedName="Hora"
+                      externalMetadataColumnId="Package\fdHora\dHora.Inputs[Entrada de destino de OLE DB].ExternalColumns[hora]"
+                      lineageId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].Columns[Hora]" />
+                    <inputColumn
+                      refId="Package\fdHora\dHora.Inputs[Entrada de destino de OLE DB].Columns[Jornada]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Jornada"
+                      externalMetadataColumnId="Package\fdHora\dHora.Inputs[Entrada de destino de OLE DB].ExternalColumns[jornada]"
+                      lineageId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].Columns[Jornada]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\fdHora\dHora.Inputs[Entrada de destino de OLE DB].ExternalColumns[idHora]"
+                      dataType="i4"
+                      name="idHora" />
+                    <externalMetadataColumn
+                      refId="Package\fdHora\dHora.Inputs[Entrada de destino de OLE DB].ExternalColumns[hora]"
+                      dataType="dbTime2"
+                      name="hora"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\fdHora\dHora.Inputs[Entrada de destino de OLE DB].ExternalColumns[jornada]"
+                      dataType="wstr"
+                      length="20"
+                      name="jornada" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\fdHora\dHora.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\fdHora\dHora.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdHora\dHora.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\fdHora\dHora.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\fdHora\dHora.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\fdHora\dHora.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\fdHora\hojaHora"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de Excel"
+              name="hojaHora"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">DimHora$</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="La asignación de parámetros del comando SQL a variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fdHora\hojaHora.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[excelLlamadas]"
+                  connectionManagerRefId="Package.ConnectionManagers[excelLlamadas]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel]"
+                  name="Salida de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].Columns[IdHora]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].ExternalColumns[IdHora]"
+                      lineageId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].Columns[IdHora]"
+                      name="IdHora"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].Columns[Hora]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].ExternalColumns[Hora]"
+                      lineageId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].Columns[Hora]"
+                      name="Hora"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].Columns[Jornada]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].ExternalColumns[Jornada]"
+                      length="255"
+                      lineageId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].Columns[Jornada]"
+                      name="Jornada"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].ExternalColumns[IdHora]"
+                      dataType="r8"
+                      name="IdHora" />
+                    <externalMetadataColumn
+                      refId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].ExternalColumns[Hora]"
+                      dataType="date"
+                      name="Hora" />
+                    <externalMetadataColumn
+                      refId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel].ExternalColumns[Jornada]"
+                      dataType="wstr"
+                      length="255"
+                      name="Jornada" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\fdHora\hojaHora.Outputs[Salida de error de origen de Excel]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdHora\hojaHora.Outputs[Salida de error de origen de Excel].Columns[IdHora]"
+                      dataType="r8"
+                      lineageId="Package\fdHora\hojaHora.Outputs[Salida de error de origen de Excel].Columns[IdHora]"
+                      name="IdHora" />
+                    <outputColumn
+                      refId="Package\fdHora\hojaHora.Outputs[Salida de error de origen de Excel].Columns[Hora]"
+                      dataType="date"
+                      lineageId="Package\fdHora\hojaHora.Outputs[Salida de error de origen de Excel].Columns[Hora]"
+                      name="Hora" />
+                    <outputColumn
+                      refId="Package\fdHora\hojaHora.Outputs[Salida de error de origen de Excel].Columns[Jornada]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\fdHora\hojaHora.Outputs[Salida de error de origen de Excel].Columns[Jornada]"
+                      name="Jornada" />
+                    <outputColumn
+                      refId="Package\fdHora\hojaHora.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\fdHora\hojaHora.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\fdHora\hojaHora.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\fdHora\hojaHora.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\fdHora.Paths[Salida de origen de Excel]"
+              endId="Package\fdHora\dHora.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de Excel"
+              startId="Package\fdHora\hojaHora.Outputs[Salida de origen de Excel]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\fdResultadoLlamadas"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{4FD0E547-5219-4100-B362-AEBDFDC06C95}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="fdResultadoLlamadas"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\fdResultadoLlamadas\dResultadoLlamadas"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="dResultadoLlamadas"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dResultadoLlamada]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fdResultadoLlamadas\dResultadoLlamadas.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlCallCenter]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlCallCenter]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\fdResultadoLlamadas\dResultadoLlamadas.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\fdResultadoLlamadas\dResultadoLlamadas.Inputs[Entrada de destino de OLE DB].Columns[IdResultadoLlamada]"
+                      cachedDataType="r8"
+                      cachedName="IdResultadoLlamada"
+                      externalMetadataColumnId="Package\fdResultadoLlamadas\dResultadoLlamadas.Inputs[Entrada de destino de OLE DB].ExternalColumns[idResultadoLlamada]"
+                      lineageId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de origen de Excel].Columns[IdResultadoLlamada]" />
+                    <inputColumn
+                      refId="Package\fdResultadoLlamadas\dResultadoLlamadas.Inputs[Entrada de destino de OLE DB].Columns[ResultadoLlamada]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ResultadoLlamada"
+                      externalMetadataColumnId="Package\fdResultadoLlamadas\dResultadoLlamadas.Inputs[Entrada de destino de OLE DB].ExternalColumns[ResultadoLlamada]"
+                      lineageId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de origen de Excel].Columns[ResultadoLlamada]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\fdResultadoLlamadas\dResultadoLlamadas.Inputs[Entrada de destino de OLE DB].ExternalColumns[idResultadoLlamada]"
+                      dataType="ui1"
+                      name="idResultadoLlamada" />
+                    <externalMetadataColumn
+                      refId="Package\fdResultadoLlamadas\dResultadoLlamadas.Inputs[Entrada de destino de OLE DB].ExternalColumns[ResultadoLlamada]"
+                      dataType="wstr"
+                      length="30"
+                      name="ResultadoLlamada" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\fdResultadoLlamadas\dResultadoLlamadas.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\fdResultadoLlamadas\dResultadoLlamadas.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdResultadoLlamadas\dResultadoLlamadas.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\fdResultadoLlamadas\dResultadoLlamadas.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\fdResultadoLlamadas\dResultadoLlamadas.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\fdResultadoLlamadas\dResultadoLlamadas.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\fdResultadoLlamadas\hojaResultadoLlamada"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de Excel"
+              name="hojaResultadoLlamada"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">DimResultadoLlamada$</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="La asignación de parámetros del comando SQL a variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[excelLlamadas]"
+                  connectionManagerRefId="Package.ConnectionManagers[excelLlamadas]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de origen de Excel]"
+                  name="Salida de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de origen de Excel].Columns[IdResultadoLlamada]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de origen de Excel].ExternalColumns[IdResultadoLlamada]"
+                      lineageId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de origen de Excel].Columns[IdResultadoLlamada]"
+                      name="IdResultadoLlamada"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de origen de Excel].Columns[ResultadoLlamada]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de origen de Excel].ExternalColumns[ResultadoLlamada]"
+                      length="255"
+                      lineageId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de origen de Excel].Columns[ResultadoLlamada]"
+                      name="ResultadoLlamada"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de origen de Excel].ExternalColumns[IdResultadoLlamada]"
+                      dataType="r8"
+                      name="IdResultadoLlamada" />
+                    <externalMetadataColumn
+                      refId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de origen de Excel].ExternalColumns[ResultadoLlamada]"
+                      dataType="wstr"
+                      length="255"
+                      name="ResultadoLlamada" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de error de origen de Excel]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de error de origen de Excel].Columns[IdResultadoLlamada]"
+                      dataType="r8"
+                      lineageId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de error de origen de Excel].Columns[IdResultadoLlamada]"
+                      name="IdResultadoLlamada" />
+                    <outputColumn
+                      refId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de error de origen de Excel].Columns[ResultadoLlamada]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de error de origen de Excel].Columns[ResultadoLlamada]"
+                      name="ResultadoLlamada" />
+                    <outputColumn
+                      refId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\fdResultadoLlamadas.Paths[Salida de origen de Excel]"
+              endId="Package\fdResultadoLlamadas\dResultadoLlamadas.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de Excel"
+              startId="Package\fdResultadoLlamadas\hojaResultadoLlamada.Outputs[Salida de origen de Excel]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\fdTipoLlamadas"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{7149F950-B70B-4E37-8B73-2460DDB12A5B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="fdTipoLlamadas"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\fdTipoLlamadas\dTipoLlamada"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="dTipoLlamada"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dTipoLlamada]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fdTipoLlamadas\dTipoLlamada.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sqlCallCenter]"
+                  connectionManagerRefId="Package.ConnectionManagers[sqlCallCenter]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\fdTipoLlamadas\dTipoLlamada.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\fdTipoLlamadas\dTipoLlamada.Inputs[Entrada de destino de OLE DB].Columns[IdTipoLlamada]"
+                      cachedDataType="r8"
+                      cachedName="IdTipoLlamada"
+                      externalMetadataColumnId="Package\fdTipoLlamadas\dTipoLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[idTipoLlamada]"
+                      lineageId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de origen de Excel].Columns[IdTipoLlamada]" />
+                    <inputColumn
+                      refId="Package\fdTipoLlamadas\dTipoLlamada.Inputs[Entrada de destino de OLE DB].Columns[TipoLlamada]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TipoLlamada"
+                      externalMetadataColumnId="Package\fdTipoLlamadas\dTipoLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipoLlamada]"
+                      lineageId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de origen de Excel].Columns[TipoLlamada]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\fdTipoLlamadas\dTipoLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[idTipoLlamada]"
+                      dataType="ui1"
+                      name="idTipoLlamada" />
+                    <externalMetadataColumn
+                      refId="Package\fdTipoLlamadas\dTipoLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipoLlamada]"
+                      dataType="wstr"
+                      length="50"
+                      name="tipoLlamada" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\fdTipoLlamadas\dTipoLlamada.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\fdTipoLlamadas\dTipoLlamada.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdTipoLlamadas\dTipoLlamada.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\fdTipoLlamadas\dTipoLlamada.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\fdTipoLlamadas\dTipoLlamada.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\fdTipoLlamadas\dTipoLlamada.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\fdTipoLlamadas\hojaTipoLlamadas"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de Excel"
+              name="hojaTipoLlamadas"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">DimTipoLlamada$</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="La asignación de parámetros del comando SQL a variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fdTipoLlamadas\hojaTipoLlamadas.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[excelLlamadas]"
+                  connectionManagerRefId="Package.ConnectionManagers[excelLlamadas]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de origen de Excel]"
+                  name="Salida de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de origen de Excel].Columns[IdTipoLlamada]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de origen de Excel].ExternalColumns[IdTipoLlamada]"
+                      lineageId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de origen de Excel].Columns[IdTipoLlamada]"
+                      name="IdTipoLlamada"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de origen de Excel].Columns[TipoLlamada]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de origen de Excel].ExternalColumns[TipoLlamada]"
+                      length="255"
+                      lineageId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de origen de Excel].Columns[TipoLlamada]"
+                      name="TipoLlamada"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de origen de Excel].ExternalColumns[IdTipoLlamada]"
+                      dataType="r8"
+                      name="IdTipoLlamada" />
+                    <externalMetadataColumn
+                      refId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de origen de Excel].ExternalColumns[TipoLlamada]"
+                      dataType="wstr"
+                      length="255"
+                      name="TipoLlamada" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de error de origen de Excel]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de error de origen de Excel].Columns[IdTipoLlamada]"
+                      dataType="r8"
+                      lineageId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de error de origen de Excel].Columns[IdTipoLlamada]"
+                      name="IdTipoLlamada" />
+                    <outputColumn
+                      refId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de error de origen de Excel].Columns[TipoLlamada]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de error de origen de Excel].Columns[TipoLlamada]"
+                      name="TipoLlamada" />
+                    <outputColumn
+                      refId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\fdTipoLlamadas.Paths[Salida de origen de Excel]"
+              endId="Package\fdTipoLlamadas\dTipoLlamada.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de Excel"
+              startId="Package\fdTipoLlamadas\hojaTipoLlamadas.Outputs[Salida de origen de Excel]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="183,42"
+          Id="Package\fdAgente"
+          TopLeft="307.5,7.5" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\fdFecha"
+          TopLeft="17.5,10.5" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\fdHora"
+          TopLeft="22.5,73.5" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\fdResultadoLlamadas"
+          TopLeft="315.5,66.5" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\fdTipoLlamadas"
+          TopLeft="29.5,149.5" />
+        <NodeLayout
+          Size="123,42"
+          Id="Package\fdHechos"
+          TopLeft="311.5,153.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\fdAgente">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="132,42"
+          Id="Package\fdAgente\hojaAgente"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="118,42"
+          Id="Package\fdAgente\dAgente"
+          TopLeft="248.357142857143,4.07142857142857" />
+        <EdgeLayout
+          Id="Package\fdAgente.Paths[Salida de origen de Excel]"
+          TopLeft="137.5,25.7857142857143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.857142857143,0"
+              Start="0,0"
+              End="103.357142857143,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="103.357142857143,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\fdAgente\hojaAgente">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\fdAgente\dAgente">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\fdFecha">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="127,42"
+          Id="Package\fdFecha\hojaFecha"
+          TopLeft="5.5,12.5" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\fdFecha\dFecha"
+          TopLeft="246.5,17.5" />
+        <EdgeLayout
+          Id="Package\fdFecha.Paths[Salida de origen de Excel]"
+          TopLeft="118.5,36">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="128,0"
+              Start="0,0"
+              End="120.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="120.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\fdFecha\hojaFecha">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\fdFecha\dFecha">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\fdHora">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="122,42"
+          Id="Package\fdHora\hojaHora"
+          TopLeft="7.5,23.5" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\fdHora\dHora"
+          TopLeft="214.5,17.5" />
+        <EdgeLayout
+          Id="Package\fdHora.Paths[Salida de origen de Excel]"
+          TopLeft="129.5,41.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85,0"
+              Start="0,0"
+              End="77.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="77.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\fdHora\hojaHora">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\fdHora\dHora">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\fdResultadoLlamadas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="185,42"
+          Id="Package\fdResultadoLlamadas\hojaResultadoLlamada"
+          TopLeft="9.5,22.5" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\fdResultadoLlamadas\dResultadoLlamadas"
+          TopLeft="298.5,26.5" />
+        <EdgeLayout
+          Id="Package\fdResultadoLlamadas.Paths[Salida de origen de Excel]"
+          TopLeft="194.5,45.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="104,0"
+              Start="0,0"
+              End="96.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="96.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\fdResultadoLlamadas\hojaResultadoLlamada">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\fdResultadoLlamadas\dResultadoLlamadas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\fdTipoLlamadas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\fdTipoLlamadas\hojaTipoLlamadas"
+          TopLeft="5.5,12.5" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\fdTipoLlamadas\dTipoLlamada"
+          TopLeft="265.5,17.5" />
+        <EdgeLayout
+          Id="Package\fdTipoLlamadas.Paths[Salida de origen de Excel]"
+          TopLeft="169.5,36">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="96,0"
+              Start="0,0"
+              End="88.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="88.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\fdTipoLlamadas\hojaTipoLlamadas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\fdTipoLlamadas\dTipoLlamada">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\fdHechos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\fdHechos\hojaHechos"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\fdHechos\dHechos"
+          TopLeft="286.5,12.5" />
+        <EdgeLayout
+          Id="Package\fdHechos.Paths[Salida de origen de Excel]"
+          TopLeft="139.5,30">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="147,0"
+              Start="0,0"
+              End="139.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="139.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\fdHechos\hojaHechos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\fdHechos\dHechos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

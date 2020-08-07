@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "etl_centromedico", "etl_centromedico\etl_centromedico.dtproj", "{C0B796A0-685C-44C2-8B16-99E9E7FE24B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0B796A0-685C-44C2-8B16-99E9E7FE24B1}.Development|Default.ActiveCfg = Development
+		{C0B796A0-685C-44C2-8B16-99E9E7FE24B1}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53395F2B-89D3-4473-9CE3-C508E0236B92}
+	EndGlobalSection
+EndGlobal

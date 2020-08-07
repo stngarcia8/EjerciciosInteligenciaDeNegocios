@@ -1,0 +1,108 @@
+INDICACIONES GENERALES
+
+Evidencia 1.1: Entrega de Encargo. Relevancia: 30% 
+Entrega avance de Proyecto a nivel de diseño del Modelo conceptual, diseño del Modelo Dimensional y la construcción de un modelo dimensional en la base de datos.
+Entrega basada en un Caso aportado por la escuela o por el Docente.
+
+APRENDIZAJES ESPERADOS
+
+•	Diseñar el modelo conceptual que represente los requerimientos de información de la organización según una definición escalable.
+
+•	Implementar el modelo dimensional en la base de datos generando las condiciones para el almacenamiento, procesamiento, manipulación y consulta de datos.
+
+•	Implementar un proceso de extracción, transformación y carga de datos para poblar el modelo dimensional construido.
+
+•	Trabajar en equipo para alcanzar los objetivos y soluciones a los problemas planteados.
+
+•	Reconocer los elementos de modelado y diseño para el desarrollo de software de acuerdo a los fundamentos de la Ingeniería del Software.
+ 
+
+INSTRUCCIONES
+
+Esta evaluación consiste en la presentación de un caso formativo “Automatización Libreta de Medicamentos CESFAM”: La evaluación consiste en la creación de un datawarehouse, a partir de un requerimiento de gestión, utilizando Sql Server. El alumno debe entregar el datawarehouse en base a la problemática.
+
+PROBLEMA
+Actualmente, los ingresos de nuestros pacientes al servicio de urgencia se realizan por medio de fichas en papel que se le entregan al paciente a la llegada. Los pacientes deben llenar sus antecedentes personales y luego, un funcionario del servicio les realiza las consultas más técnicas para completar la ficha. Esto genera una demora en la atención y un uso del tiempo del personal administrativo en el llenado y almacenamiento de las fichas que podría servir para realizar otras funciones. Además, los pacientes en muchas ocasiones llenan mal la ficha ocasionando el que tengan que realizar de nuevo el trámite.
+Requerimientos
+•	La tabla de Hechos tiene que ser en base al caso planteado, y debe tener por nombre: “PRESCRIPCIÓN”.
+•	El modelo de Base de Datos Multidimensional, debe tener como mínimo 5 dimensiones.
+•	El modelo debe tener al menos 3 sub dimensiones (modelo estrella + modelo copo de nieve).
+•	Tiempo y Lugar es una dimensión obligatoria.
+•	Se debe presentar el Script de la base de datos + Una imagen del modelo creado.
+•	A la tabla de hechos además de las claves foranes debe ingresar como mínimo 5 campos adicionales propios de la tabla.
+•	Los tipo de campos y longitud son a criterio de cada quien, basándose en las consideraciones del caso.
+•	Todas las tablas dimensiones deben tener una calve primaria id de tipo INT, y fecha de creación y estado de la tabla como tal.
+
+
+
+
+
+
+
+
+
+Consideraciones de Dimensiones Base de Datos DW
+Médico 
+Si observamos la ficha, la información del médico es: El nombre del médico y la especialidad, pero necesitamos que nuestro sistema almacene más información de los médicos que serán muy importantes para nuestros posteriores análisis, como, por ejemplo: RUN, horario de atención, título, institución de donde obtuvo el título, año que lo obtuvo, teléfono, dirección. Si ustedes consideran más datos que puedan ser de utilidad, aceptamos sus propuestas.
+
+Administrativos
+En el caso de los administrativos ocurre algo muy similar que lo ocurrido con los médicos, en la ficha solo se solicita el nombre de la persona que realizó el ingreso, pero es importante obtener mas datos que sean relevantes para la organización, son muy importantes todos sus datos personales y de contacto. 
+
+Medicamento
+Se debe crear la administración de stock de farmacia, identificando cada artículo por un código, descripción, fabricante, tipo, componentes, contenido, cantidad, gramaje, etc.
+
+
+
+
+Fichas de Paciente
+Cada Prescripción, deberá ir asociada a un paciente el cual será atendido. Registrando de este la información mínima que requiere un doctor para su posterior evaluación. Información Personal, Grupo Sanguíneo, Asiste Acompañado, etc.
+
+
+
+
+
+
+
+
+
+
+
+A continuación, adjuntamos una imagen de EJEMPLO de la ficha de atención para que pueda visualizar cuales son los datos que necesitamos guardar de nuestros pacientes:
+                                     Servicio de salud Duoc
+                                                      Unidad de Urgencia
+
+FICHA DE INGRESO N° XXX
+Fecha de Atención:	Hora de atención:
+Nombre del personal que ingresa ficha:	
+IDENTIFICACION DE PACIENTE
+		Nivel de urgencia:	
+Nombre:			
+Apellido:			
+Rut:		Sexo: 	
+Estado Civil:		Edad:	
+Domicilio:		Grupo sanguíneo	
+Fono:			
+Asiste acompañado:	SI	NO	
+MOTIVO DE CONSULTA MEDICA
+Descripción del paciente:
+
+INFORMACION DE ATENCION	
+Nombre medico:	
+Especialidad:	
+Síntomas detectados:
+
+Diagnóstico:
+
+Reposo:  	SI	NO
+Cantidad de días: 
+INFORMACIÓN DE MEDICAMENTO	
+Médico Asigna medicamento	SI	NO
+Nombre de medicamento:	
+Dosis:	
+Cantidad de días:	
+
+
+
+
+
+

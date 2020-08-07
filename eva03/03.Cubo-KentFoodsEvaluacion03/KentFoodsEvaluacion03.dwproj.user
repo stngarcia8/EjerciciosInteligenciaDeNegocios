@@ -1,0 +1,29 @@
+<AnalysisServicesUserConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Configurations>
+    <Configuration>
+      <Name>Development</Name>
+      <Options>
+        <UserIDs>
+          <ConfigurationSetting>
+            <Id>DW Kent Foods</Id>
+            <Name>DW Kent Foods</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAHHCyQj9unE6YajVZcIJ5LAAAAAAcAAAARABXACAASwBlAG4AdAAgAEYAbwBvAGQAcwAAABBmAAAAAQAAIAAAAEPobHDQSWThTtvqzUm3yB95XlFPBGfY2jFnjYWYti90AAAAAA6AAAAAAgAAIAAAAF/X3cq/n9XiIL1+RLBqtX5up5YYC9yV+4APz3hwQpMwEAAAAPZLY3E4USNW6d0R1oi5POxAAAAAl7P7FFXn/02YrVj3WNUJyynjK3Vo1rCO5ANvb9meIybZEda1RkAyAxZafMJq7Q20VRC3GnymVFq0TuPN3eYUuQ==</Value>
+          </ConfigurationSetting>
+        </UserIDs>
+        <UserPasswords>
+          <ConfigurationSetting>
+            <Id>DW Kent Foods</Id>
+            <Name>DW Kent Foods</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAHHCyQj9unE6YajVZcIJ5LAAAAAAcAAAARABXACAASwBlAG4AdAAgAEYAbwBvAGQAcwAAABBmAAAAAQAAIAAAAMLz8jaeoFN0k5FmhW4bC6OPAgXcwrKRoOxOAsVMiT7dAAAAAA6AAAAAAgAAIAAAAI+1Z+0m8Wr4f7xZYhFXwzMeFmwR04/xwiXprZZ4ZaLkIAAAACiytbjO3H3hCiaNzdkkQykFNrIWvvLWTkEcJn0VSd+AQAAAANq77sGPMjJFJFPPBtyvC1F9Z7dsXCdkt2QT3pEBhwAJGWDUyqZC70lvTnDmtVPzs+ivNAdB9bNnDy18WFDqJEE=</Value>
+          </ConfigurationSetting>
+        </UserPasswords>
+        <TargetServer>localhost</TargetServer>
+        <TargetDatabase>KentFoodsEvaluacion03</TargetDatabase>
+        <StartObject>
+          <ObjectId></ObjectId>
+          <ObjectType>Current</ObjectType>
+        </StartObject>
+      </Options>
+    </Configuration>
+  </Configurations>
+</AnalysisServicesUserConfiguration>

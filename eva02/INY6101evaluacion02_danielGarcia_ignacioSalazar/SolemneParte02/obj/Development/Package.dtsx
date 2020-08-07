@@ -1,0 +1,1847 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/17/2019 11:50:00 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="STNPC"
+  DTS:CreatorName="STNPC\asathor"
+  DTS:DTSID="{D1E98760-943C-4A02-97B4-635194CC7053}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1900.73"
+  DTS:LocaleID="13322"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{0636E028-C5BF-4F01-B8DC-4E53AF6761E9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.DWKentFoods.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{326F5FBB-1FA9-4124-9258-40D4837D206B}"
+      DTS:ObjectName="localhost.DWKentFoods.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=DWKentFoods;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAHHCyQj9unE6YajVZcIJ5LAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABD2NOgim5keFQMcaVrKLc+yxQy3ZLt/FcWxRv/RwjJigAAAAAOgAAAAAIAACAAAAClZlNnKhygFFX3Qvr3fKJtkCtwxbCaW9TuGTGpWomeuiAAAACAh036H+MIpJ/sLKSfQBcCIMu/XzIGohAXTQUmL745xEAAAADo9jOCIl2B/BfWDdVJ7QNqlt1yW+DDJE4l4VaHUNi4WhE0Qw3g/fGToG39T5cBH/z06qhcfIYaCDaYH+prp63H</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.KentFoods.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{68294371-EDE7-497E-9F21-A1B5EC48229C}"
+      DTS:ObjectName="localhost.KentFoods.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=KentFoods;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAHHCyQj9unE6YajVZcIJ5LAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADluC3RrHvrYxvbqKwX5jNXoSYzds2cNdjaA3PvGfcuZgAAAAAOgAAAAAIAACAAAABMnrC4cFxhTPoPF0y5iWjsMkVYuWFwOsYT2XVOXTw/QyAAAAApZCYcMCibSGGQ4JFD6qCY9v0n2nIgCPnGMsc27uClUUAAAAC7trwtcG5jZH6sshJjDd1/yqegkl4BGGeNKPvB9F75rN7tpoPOivZnTWMSlh4JAetFnFVL79ejS2k2dWilZReh</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Traspasar empleados"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{2F439A3B-5FCD-4E6E-9957-8A51532B63E0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Traspasar empleados"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Traspasar empleados\Actualizar empleado dimensional"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Comando de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Ejecuta una instrucción SQL para cada fila de un flujo de datos. Por ejemplo, se usa para llamar al procedimiento almacenado de configuración de nuevo empleado para cada fila de la tabla de nuevos empleados. Nota: la ejecución de una instrucción SQL para cada fila de un flujo de datos de gran tamaño puede tardar mucho tiempo."
+              name="Actualizar empleado dimensional"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dbo].[dim_empleado] SET [Apellido] = ?,[Cargo] = ?,[Ciudad] = ?,[Direccion] = ?,[Nombre] = ?,[Pais] = ?,[Region] = ?,[Territorio] = ?, UpdateDate=getdate() WHERE [EmpleadoID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Traspasar empleados\Actualizar empleado dimensional.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DWKentFoods.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DWKentFoods.sa]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB]"
+                  errorOrTruncationOperation="Ejecución de comando"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de comando de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].Columns[Apellido]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Apellido"
+                      externalMetadataColumnId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Apellido]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].Columns[Cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Cargo"
+                      externalMetadataColumnId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Cargo]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].Columns[Ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Ciudad"
+                      externalMetadataColumnId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Ciudad]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].Columns[Direccion]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Direccion"
+                      externalMetadataColumnId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Direccion]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].Columns[EmpleadoID]"
+                      cachedDataType="i4"
+                      cachedName="EmpleadoID"
+                      externalMetadataColumnId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_8]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[EmpleadoID]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="nombre"
+                      externalMetadataColumnId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[nombre]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].Columns[Pais]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Pais"
+                      externalMetadataColumnId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Pais]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].Columns[region]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="region"
+                      externalMetadataColumnId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[region]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].Columns[territorio]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="territorio"
+                      externalMetadataColumnId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_7]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[territorio]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="20"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="30"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="15"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="60"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      dataType="wstr"
+                      length="10"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      dataType="wstr"
+                      length="15"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_7]"
+                      dataType="wstr"
+                      length="100"
+                      name="Param_7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_8]"
+                      dataType="i4"
+                      name="Param_8">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Traspasar empleados\Actualizar empleado dimensional.Outputs[Salida de comando de OLE DB]"
+                  exclusionGroup="1"
+                  name="Salida de comando de OLE DB"
+                  synchronousInputId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Traspasar empleados\Actualizar empleado dimensional.Outputs[Salida de error de comando de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de comando de OLE DB"
+                  synchronousInputId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Traspasar empleados\Actualizar empleado dimensional.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Actualizar empleado dimensional.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Traspasar empleados\Actualizar empleado dimensional.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Traspasar empleados\Buscar empleados dimensional"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="Buscar empleados dimensional"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[dim_empleado]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[dim_empleado]) [refTable]
+where [refTable].[EmpleadoID] = ? and [refTable].[Apellido] = ? and [refTable].[Nombre] = ? and [refTable].[Cargo] = ? and [refTable].[Direccion] = ? and [refTable].[Ciudad] = ? and [refTable].[Pais] = ? and [refTable].[Territorio] = ? and [refTable].[Region] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EmpleadoID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Apellido" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nombre" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Cargo" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Direccion" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Ciudad" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Pais" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Territorio" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Region" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[EmpleadoID]};#{Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Apellido]};#{Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[nombre]};#{Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Cargo]};#{Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Direccion]};#{Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Ciudad]};#{Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Pais]};#{Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[territorio]};#{Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[region]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Traspasar empleados\Buscar empleados dimensional.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DWKentFoods.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DWKentFoods.sa]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Traspasar empleados\Buscar empleados dimensional.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Inputs[Entrada de búsqueda].Columns[EmpleadoID]"
+                      cachedDataType="i4"
+                      cachedName="EmpleadoID"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[EmpleadoID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">EmpleadoID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Inputs[Entrada de búsqueda].Columns[Apellido]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Apellido"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Apellido]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">Apellido</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Inputs[Entrada de búsqueda].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="nombre"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[nombre]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">Nombre</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Inputs[Entrada de búsqueda].Columns[Cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Cargo"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Cargo]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">Cargo</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Inputs[Entrada de búsqueda].Columns[Direccion]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Direccion"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Direccion]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">Direccion</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Inputs[Entrada de búsqueda].Columns[Ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Ciudad"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Ciudad]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">Ciudad</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Inputs[Entrada de búsqueda].Columns[Pais]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Pais"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Pais]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">Pais</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Inputs[Entrada de búsqueda].Columns[territorio]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="territorio"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[territorio]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">Territorio</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Inputs[Entrada de búsqueda].Columns[region]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="region"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[region]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">Region</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\Traspasar empleados\Buscar empleados dimensional.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[EmpleadoID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[EmpleadoID]"
+                      name="EmpleadoID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">EmpleadoID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Apellido]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copiar columna"
+                      length="20"
+                      lineageId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Apellido]"
+                      name="Apellido"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">Apellido</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copiar columna"
+                      length="10"
+                      lineageId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">Nombre</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Cargo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copiar columna"
+                      length="30"
+                      lineageId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Cargo]"
+                      name="Cargo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">Cargo</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Direccion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copiar columna"
+                      length="60"
+                      lineageId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Direccion]"
+                      name="Direccion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">Direccion</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Ciudad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copiar columna"
+                      length="15"
+                      lineageId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Ciudad]"
+                      name="Ciudad"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">Ciudad</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Pais]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copiar columna"
+                      length="15"
+                      lineageId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Pais]"
+                      name="Pais"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">Pais</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Territorio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copiar columna"
+                      length="100"
+                      lineageId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Territorio]"
+                      name="Territorio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">Territorio</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copiar columna"
+                      length="50"
+                      lineageId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">Region</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\Traspasar empleados\Buscar empleados dimensional.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\Traspasar empleados\Buscar empleados dimensional.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Traspasar empleados\Cargar empleados relacional"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Cargar empleados relacional"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+    DISTINCT
+    dbo.Empleados.EmpleadoID,
+    dbo.Empleados.Apellido,
+    dbo.Empleados.nombre,
+    dbo.Empleados.Cargo,
+    dbo.Empleados.Direccion,
+    dbo.Empleados.Ciudad,
+    dbo.Empleados.Pais,
+    CONVERT(NVARCHAR(100),stuff((
+    SELECT
+        ','+dbo.territorios.territorio
+    FROM
+        dbo.TerritoriosEmpleados teem
+        INNER JOIN dbo.territorios ON teem.territorioID=dbo.territorios.TerritorioId
+    WHERE teem.EmpleadoID = te.EmpleadoID
+    FOR xml path ('')
+    ),1,1,'')) AS territorio,
+    CONVERT(NVARCHAR(50),stuff((
+    SELECT
+        DISTINCT
+        ','+dbo.regiones.region
+    FROM
+        dbo.TerritoriosEmpleados teem
+        INNER JOIN dbo.territorios ON teem.territorioID=dbo.territorios.TerritorioId
+        INNER JOIN dbo.regiones ON dbo.territorios.RegionID=dbo.Regiones.RegionID
+    WHERE teem.EmpleadoID = te.EmpleadoID
+    FOR xml path ('')
+    ),1,1,'')) AS region
+FROM
+    dbo.Empleados
+    INNER JOIN dbo.TerritoriosEmpleados te ON dbo.Empleados.EmpleadoID = te.EmpleadoID</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Traspasar empleados\Cargar empleados relacional.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.KentFoods.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.KentFoods.sa]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[EmpleadoID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[EmpleadoID]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[EmpleadoID]"
+                      name="EmpleadoID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Apellido]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[Apellido]"
+                      length="20"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Apellido]"
+                      name="Apellido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre]"
+                      length="10"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[nombre]"
+                      name="nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Cargo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[Cargo]"
+                      length="30"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Cargo]"
+                      name="Cargo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Direccion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[Direccion]"
+                      length="60"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Direccion]"
+                      name="Direccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Ciudad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[Ciudad]"
+                      length="15"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Ciudad]"
+                      name="Ciudad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Pais]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[Pais]"
+                      length="15"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Pais]"
+                      name="Pais"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[territorio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[territorio]"
+                      length="100"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[territorio]"
+                      name="territorio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[region]"
+                      length="50"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[region]"
+                      name="region"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[EmpleadoID]"
+                      dataType="i4"
+                      name="EmpleadoID" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[Apellido]"
+                      dataType="wstr"
+                      length="20"
+                      name="Apellido" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="10"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[Direccion]"
+                      dataType="wstr"
+                      length="60"
+                      name="Direccion" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="15"
+                      name="Ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[Pais]"
+                      dataType="wstr"
+                      length="15"
+                      name="Pais" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[territorio]"
+                      dataType="wstr"
+                      length="100"
+                      name="territorio" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[region]"
+                      dataType="wstr"
+                      length="50"
+                      name="region" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[EmpleadoID]"
+                      dataType="i4"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[EmpleadoID]"
+                      name="EmpleadoID" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[Apellido]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[Apellido]"
+                      name="Apellido" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[nombre]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[nombre]"
+                      name="nombre" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[Cargo]"
+                      name="Cargo" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[Direccion]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[Direccion]"
+                      name="Direccion" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[Ciudad]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[Ciudad]"
+                      name="Ciudad" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[Pais]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[Pais]"
+                      name="Pais" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[territorio]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[territorio]"
+                      name="territorio" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[region]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[region]"
+                      name="region" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Traspasar empleados\Dimensión de variación lenta"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Dimensión de variación lenta;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;3"
+              description="Actualiza una dimensión del almacenamiento de datos de SQL Server Analysis Services. Actualiza los registros de dimensión existentes e inserta los registros de dimensión que faltan. Por ejemplo, se actualiza la tabla DimProduct de la base de datos OLAP AdventureWorksDW con datos procedentes de la tabla Products de la base de datos OLTP AdventureWorks."
+              name="Dimensión de variación lenta"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SELECT utilizada para crear un conjunto de filas de esquema."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [Apellido], [Cargo], [Ciudad], [Direccion], [EmpleadoID], [Nombre], [Pais], [Region], [Territorio] FROM [dbo].[dim_empleado]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la cláusula WHERE de la instrucción SELECT que selecciona la fila actual de entre filas con claves empresariales idénticas."
+                  name="CurrentRowWhere"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las actualizaciones de atributos históricos se dirigen a la salida de transformación para actualizaciones de atributos variables."
+                  name="UpdateChangingAttributeHistory">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se produce un error de transformación cuando las columnas con atributos fijos contienen cambios."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre de columna para el miembro deducido."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se detectan las actualizaciones de miembros deducidos."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se produce un error de transformación cuando se produce un error de búsqueda de un registro existente."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica que todas las filas de la entrada sean nuevas o que la transformación detecte el tipo de cambio."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Traspasar empleados\Dimensión de variación lenta.Connections[LookupConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DWKentFoods.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DWKentFoods.sa]"
+                  description="Define la conexión que se debe usar para búsquedas en la tabla de dimensiones"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]"
+                  name="Entrada de dimensión de variación lenta">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[Apellido]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Apellido"
+                      externalMetadataColumnId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Apellido]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Apellido]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[Cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Cargo"
+                      externalMetadataColumnId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Cargo]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Cargo]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[Ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Ciudad"
+                      externalMetadataColumnId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Ciudad]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Ciudad]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[Direccion]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Direccion"
+                      externalMetadataColumnId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Direccion]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Direccion]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[EmpleadoID]"
+                      cachedDataType="i4"
+                      cachedName="EmpleadoID"
+                      externalMetadataColumnId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[EmpleadoID]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[EmpleadoID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="nombre"
+                      externalMetadataColumnId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Nombre]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[nombre]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[Pais]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Pais"
+                      externalMetadataColumnId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Pais]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Pais]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[region]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="region"
+                      externalMetadataColumnId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Region]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[region]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[territorio]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="territorio"
+                      externalMetadataColumnId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Territorio]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[territorio]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Apellido]"
+                      dataType="wstr"
+                      length="20"
+                      name="Apellido" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="15"
+                      name="Ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Direccion]"
+                      dataType="wstr"
+                      length="60"
+                      name="Direccion" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[EmpleadoID]"
+                      dataType="i4"
+                      name="EmpleadoID" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="10"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Pais]"
+                      dataType="wstr"
+                      length="15"
+                      name="Pais" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="50"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Territorio]"
+                      dataType="wstr"
+                      length="100"
+                      name="Territorio" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Traspasar empleados\Dimensión de variación lenta.Outputs[Salida sin cambios]"
+                  description="Filas sin cambios"
+                  exclusionGroup="1"
+                  name="Salida sin cambios"
+                  synchronousInputId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Traspasar empleados\Dimensión de variación lenta.Outputs[Nueva salida]"
+                  description="Nuevas filas"
+                  exclusionGroup="1"
+                  name="Nueva salida"
+                  synchronousInputId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Traspasar empleados\Dimensión de variación lenta.Outputs[Salida de atributo fijo]"
+                  description="Filas con cambios en columnas etiquetadas FixedAttribute"
+                  exclusionGroup="1"
+                  name="Salida de atributo fijo"
+                  synchronousInputId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Traspasar empleados\Dimensión de variación lenta.Outputs[Salida de actualizaciones de atributos variables]"
+                  description="Estas filas contienen información nueva para cambios de columnas ChangingAttribute (tipo 1)"
+                  exclusionGroup="1"
+                  name="Salida de actualizaciones de atributos variables"
+                  synchronousInputId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Traspasar empleados\Dimensión de variación lenta.Outputs[Salida de inserciones de atributos históricos]"
+                  description="Los cambios de HistoricalAttribute (tipo 2) crean estas nuevas filas"
+                  exclusionGroup="2"
+                  name="Salida de inserciones de atributos históricos"
+                  synchronousInputId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Traspasar empleados\Dimensión de variación lenta.Outputs[Salida de actualizaciones de miembros deducidos]"
+                  description="Información para actualizar fila de dimensión inicial sin rellenar"
+                  exclusionGroup="1"
+                  name="Salida de actualizaciones de miembros deducidos"
+                  synchronousInputId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Grabar nuevo empleado dimensional"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dim_empleado]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DWKentFoods.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DWKentFoods.sa]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].Columns[EmpleadoID]"
+                      cachedDataType="i4"
+                      cachedName="EmpleadoID"
+                      externalMetadataColumnId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmpleadoID]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[EmpleadoID]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].Columns[Apellido]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Apellido"
+                      externalMetadataColumnId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Apellido]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Apellido]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="nombre"
+                      externalMetadataColumnId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Nombre]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[nombre]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].Columns[Cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Cargo"
+                      externalMetadataColumnId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cargo]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Cargo]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].Columns[Direccion]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Direccion"
+                      externalMetadataColumnId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Direccion]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Direccion]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].Columns[Ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Ciudad"
+                      externalMetadataColumnId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Ciudad]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Ciudad]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].Columns[Pais]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Pais"
+                      externalMetadataColumnId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Pais]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[Pais]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].Columns[territorio]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="territorio"
+                      externalMetadataColumnId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Territorio]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[territorio]" />
+                    <inputColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].Columns[region]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="region"
+                      externalMetadataColumnId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Region]"
+                      lineageId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB].Columns[region]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmpleadoID]"
+                      dataType="i4"
+                      name="EmpleadoID" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Apellido]"
+                      dataType="wstr"
+                      length="20"
+                      name="Apellido" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="10"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Direccion]"
+                      dataType="wstr"
+                      length="60"
+                      name="Direccion" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="15"
+                      name="Ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Pais]"
+                      dataType="wstr"
+                      length="15"
+                      name="Pais" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Territorio]"
+                      dataType="wstr"
+                      length="100"
+                      name="Territorio" />
+                    <externalMetadataColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="50"
+                      name="Region" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Traspasar empleados.Paths[Nueva salida]"
+              endId="Package\Traspasar empleados\Grabar nuevo empleado dimensional.Inputs[Entrada de destino de OLE DB]"
+              name="Nueva salida"
+              startId="Package\Traspasar empleados\Dimensión de variación lenta.Outputs[Nueva salida]" />
+            <path
+              refId="Package\Traspasar empleados.Paths[Salida de actualizaciones de atributos variables]"
+              endId="Package\Traspasar empleados\Actualizar empleado dimensional.Inputs[Entrada de comando de OLE DB]"
+              name="Salida de actualizaciones de atributos variables"
+              startId="Package\Traspasar empleados\Dimensión de variación lenta.Outputs[Salida de actualizaciones de atributos variables]" />
+            <path
+              refId="Package\Traspasar empleados.Paths[Salida de entradas no coincidentes de búsqueda]"
+              endId="Package\Traspasar empleados\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]"
+              name="Salida de entradas no coincidentes de búsqueda"
+              startId="Package\Traspasar empleados\Buscar empleados dimensional.Outputs[Salida de entradas no coincidentes de búsqueda]" />
+            <path
+              refId="Package\Traspasar empleados.Paths[Salida de origen de OLE DB]"
+              endId="Package\Traspasar empleados\Buscar empleados dimensional.Inputs[Entrada de búsqueda]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Traspasar empleados\Cargar empleados relacional.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Traspasar empleados"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Traspasar empleados">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Traspasar empleados\Cargar empleados relacional"
+          TopLeft="16,12.5" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\Traspasar empleados\Dimensión de variación lenta"
+          TopLeft="223,111.5" />
+        <NodeLayout
+          Size="129,42"
+          Id="Package\Traspasar empleados\Buscar empleados dimensional"
+          TopLeft="267.5,20.5" />
+        <NodeLayout
+          Size="259,42"
+          Id="Package\Traspasar empleados\Grabar nuevo empleado dimensional"
+          TopLeft="14.5000000000001,235.5" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Traspasar empleados\Actualizar empleado dimensional"
+          TopLeft="380.5,243.5" />
+        <EdgeLayout
+          Id="Package\Traspasar empleados.Paths[Salida de origen de OLE DB]"
+          TopLeft="186,33.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="81.5,8"
+              Start="0,0"
+              End="74,8">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="36.75,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="36.75,0"
+                    Point2="40.75,0"
+                    Point3="40.75,4" />
+                  <mssgle:LineSegment
+                    End="40.75,4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="40.75,4"
+                    Point2="40.75,8"
+                    Point3="44.75,8" />
+                  <mssgle:LineSegment
+                    End="74,8" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Traspasar empleados.Paths[Salida de entradas no coincidentes de búsqueda]"
+          TopLeft="332.5,62.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-106.8890234375,14.65234375,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Traspasar empleados.Paths[Salida de actualizaciones de atributos variables]"
+          TopLeft="368.333333333333,153.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="104.666666666667,90"
+              Start="0,0"
+              End="104.666666666667,82.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.3898916967509" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.3898916967509"
+                    Point2="0,36.3898916967509"
+                    Point3="4,36.3898916967509" />
+                  <mssgle:LineSegment
+                    End="100.666666666667,36.3898916967509" />
+                  <mssgle:CubicBezierSegment
+                    Point1="100.666666666667,36.3898916967509"
+                    Point2="104.666666666667,36.3898916967509"
+                    Point3="104.666666666667,40.3898916967509" />
+                  <mssgle:LineSegment
+                    End="104.666666666667,82.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-51.9199088541665,41.3898916967509,208.506484375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Traspasar empleados.Paths[Nueva salida]"
+          TopLeft="297.666666666667,153.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-153.666666666667,82"
+              Start="0,0"
+              End="-153.666666666667,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.1552346570397" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.1552346570397"
+                    Point2="0,33.1552346570397"
+                    Point3="-4,33.1552346570397" />
+                  <mssgle:LineSegment
+                    End="-149.666666666667,33.1552346570397" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-149.666666666667,33.1552346570397"
+                    Point2="-153.666666666667,33.1552346570397"
+                    Point3="-153.666666666667,37.1552346570397" />
+                  <mssgle:LineSegment
+                    End="-153.666666666667,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-105.121692708333,38.1552346570397,56.57671875,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Traspasar empleados\Cargar empleados relacional">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Traspasar empleados\Buscar empleados dimensional">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_empleado]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Traspasar empleados\Dimensión de variación lenta">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{326F5FBB-1FA9-4124-9258-40D4837D206B}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[dim_empleado]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Cargar empleados relacional.Salidas[Salida de origen de OLE DB].Columnas[Apellido]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Apellido&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Cargar empleados relacional.Salidas[Salida de origen de OLE DB].Columnas[Cargo]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Cargo&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Cargar empleados relacional.Salidas[Salida de origen de OLE DB].Columnas[Ciudad]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Ciudad&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Cargar empleados relacional.Salidas[Salida de origen de OLE DB].Columnas[Direccion]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Direccion&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Cargar empleados relacional.Salidas[Salida de origen de OLE DB].Columnas[EmpleadoID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;EmpleadoID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Cargar empleados relacional.Salidas[Salida de origen de OLE DB].Columnas[nombre]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Nombre&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Cargar empleados relacional.Salidas[Salida de origen de OLE DB].Columnas[Pais]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Pais&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Cargar empleados relacional.Salidas[Salida de origen de OLE DB].Columnas[region]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Region&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Cargar empleados relacional.Salidas[Salida de origen de OLE DB].Columnas[territorio]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Territorio&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insertar destino&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Comando de OLE DB&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

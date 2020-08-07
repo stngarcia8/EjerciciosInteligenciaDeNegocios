@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "KentFoodsEvaluacion03", "KentFoodsEvaluacion03.dwproj", "{4ABCA635-F6AB-4074-A89C-D5C8B5E8F4AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4ABCA635-F6AB-4074-A89C-D5C8B5E8F4AB}.Development|Default.ActiveCfg = Development
+		{4ABCA635-F6AB-4074-A89C-D5C8B5E8F4AB}.Development|Default.Build.0 = Development
+		{4ABCA635-F6AB-4074-A89C-D5C8B5E8F4AB}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99F8CF16-5786-4939-88F4-5B4B1E04F3D4}
+	EndGlobalSection
+EndGlobal
